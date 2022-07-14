@@ -8,9 +8,9 @@ import (
 )
 
 func main() {
-	t1Str := "20180214T204603Z"
-	t2Str := "20211115T123456Z"
-	period := "1y"
+	t1Str := "20210714T204603Z"
+	t2Str := "20210715T123456Z"
+	period := "1h"
 
 	t1, err := utils.ParseFormatedDate(t1Str)
 	if err != nil {
