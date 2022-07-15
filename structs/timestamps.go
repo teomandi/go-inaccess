@@ -13,6 +13,21 @@ type Task struct {
 	T2       time.Time
 }
 
+func makeTask(p string, tz string, t1Str string, t2Str string) (Task, bool) {
+	t1, err := utils.ParseFormatedDate(t1Str)
+	if err != nil {
+		return Task{}, false
+	}
+	t2, err := utils.ParseFormatedDate(t2Str)
+	if err != nil {
+		return Task{}, false
+	}
+	if !utils.ValidatePeriod(p) {
+		return Task{}, false
+	}
+	return Task{Period: period, Timezone: "Europe/Athens", T1: t1, T2: t2}
+}
+
 func (t *Task) GetMatchingTimestamps() []string {
 	timestamps := []string{}
 

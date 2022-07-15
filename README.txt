@@ -1,7 +1,7 @@
 https://gist.github.com/hosszukalman/8fd4bb046f4a20d55f4723776d6cc964
 https://www.techieindoor.com/go-add-years-months-days-to-current-date-in-go/
 
-
+go get -u github.com/gorilla/mux
 
 	t1Str := "20180214T204603Z"
 	t1, err := time.Parse(dateFormat, t1Str)
