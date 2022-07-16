@@ -8,16 +8,16 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	strcucts "github.com/teomandi/go-inaccess/pkg/structs"
+	"github.com/teomandi/go-inaccess/pkg/structs"
 )
 
 func ptlist(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	period, tz := r.URL.Query().Get("period"), r.URL.Query().Get("tz")
 	t1, t2 := r.URL.Query().Get("t1"), r.URL.Query().Get("t2")
-	task, flag, msg := strcucts.MakeTask(period, tz, t1, t2)
+	task, flag, msg := structs.MakeTask(period, tz, t1, t2)
 	if !flag {
-		errResponse := strcucts.ErrorResponse{
+		errResponse := structs.ErrorResponse{
 			Status: "error",
 			Desc:   msg,
 		}
