@@ -2,57 +2,43 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
 	"fmt"
 	"log"
 	"net/http"
 
 	"github.com/gorilla/mux"
-	strcucts "github.com/teomandi/go-inaccess/structs"
+	strcucts "github.com/teomandi/go-inaccess/pkg/structs"
 )
 
 func ptlist(w http.ResponseWriter, r *http.Request) {
-	arr := [3]string{"20211010T204603Z", "20211010T204603Z", "20211010T204603Z"}
-
 	w.Header().Set("Content-Type", "application/json")
-	params := mux.Vars(r)
-	period := params["period"]
-	tz := params["tz"]
-	t1 := params["t1"]
-	t2 := params["t2"]
-
-	task := strcucts.Task{Period: period, Timezone: "Europe/Athens", T1: t1, T2: t2}
-
+	period, tz := r.URL.Query().Get("period"), r.URL.Query().Get("tz")
+	t1, t2 := r.URL.Query().Get("t1"), r.URL.Query().Get("t2")
+	task, flag, msg := strcucts.MakeTask(period, tz, t1, t2)
+	if !flag {
+		errResponse := strcucts.ErrorResponse{
+			Status: "error",
+			Desc:   msg,
+		}
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(errResponse)
+		return
+	}
+	arr := task.GetMatchingTimestamps()
 	json.NewEncoder(w).Encode(arr)
 	return
 }
 
 func main() {
+	addr := flag.String("addr", "localhost", "The address of the application")
+	port := flag.String("port", "8000", "The port of the application")
+	flag.Parse()
+
 	r := mux.NewRouter()
+	// r.Host(*addr + ":" + *port)
 	r.HandleFunc("/ptlist", ptlist).Methods("GET")
 
-	fmt.Printf("Starting server at post 8000\n")
-	log.Fatal(http.ListenAndServe(":8000", r))
-
-	// t1Str := "20211010T204603Z"
-	// t2Str := "20211115T123456Z"
-	// period := "1d"
-
-	// t1, err := utils.ParseFormatedDate(t1Str)
-	// if err != nil {
-	// 	fmt.Println(err)
-	// 	return
-	// }
-	// t2, err := utils.ParseFormatedDate(t2Str)
-	// if err != nil {
-	// 	fmt.Println(err)
-	// 	return
-	// }
-
-	// task := strcucts.Task{Period: period, Timezone: "Europe/Athens", T1: t1, T2: t2}
-	// timestamps := task.GetMatchingTimestamps()
-
-	// for _, v := range timestamps {
-	// 	fmt.Printf("%v\n", v)
-	// }
-
+	fmt.Printf("Starting server at %v:%v\n", *addr, *port)
+	log.Fatal(http.ListenAndServe(":"+*port, r))
 }
