@@ -5,6 +5,7 @@ type TestTask struct {
 	Timezone string
 	T1       string
 	T2       string
+	Result   bool
 }
 
 func (t *TestTask) ToString() string {

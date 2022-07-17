@@ -31,13 +31,15 @@ func ptlist(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	addr := flag.String("addr", "localhost", "The address of the application")
-	port := flag.String("port", "8000", "The port of the application")
+	// parse the command line arguments
+	addr := flag.String("addr", "http://localhost", "The address of the application")
+	port := flag.String("port", "8080", "The port of the application")
 	flag.Parse()
 
+	// initialize the app
 	r := mux.NewRouter()
-	// r.Host(*addr + ":" + *port)
 	r.HandleFunc("/ptlist", ptlist).Methods("GET")
+	// r.Host(*addr + ":" + *port)
 
 	fmt.Printf("Starting server at %v:%v\n", *addr, *port)
 	log.Fatal(http.ListenAndServe(":"+*port, r))
