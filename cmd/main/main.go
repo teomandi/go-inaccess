@@ -39,7 +39,7 @@ func main() {
 	// initialize the app
 	r := mux.NewRouter()
 	r.HandleFunc("/ptlist", ptlist).Methods("GET")
-	// r.Host(*addr + ":" + *port)
+	r.Host(*addr + ":" + *port)
 
 	fmt.Printf("Starting server at %v:%v\n", *addr, *port)
 	log.Fatal(http.ListenAndServe(":"+*port, r))

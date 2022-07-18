@@ -36,9 +36,13 @@ go build cmd/main/main.go
 ./main
 ```
 
-By default the application listens to the port 8080. To change it run like:
+By default the application listens to http://localhost:8080. To change it provide the bellow arguments:
+
+- `-port`: to set a different port.
+- `-addr`: to set a different address. However, since there is no webserver to set any domain, **only localhost and relevant IPs will work**.
+
 ```shell script
-go run cmd/main/main.go -port <port>
+go run cmd/main/main.go -port <port> -addr http://0.0.0.0
 
 // or
 
