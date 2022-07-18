@@ -8,6 +8,7 @@ type TestTask struct {
 	Result   bool
 }
 
+// returns the test-task as a string
 func (t *TestTask) ToString() string {
 	return t.Period + " " + t.Timezone + " " + t.T1 + "-" + t.T2
 }

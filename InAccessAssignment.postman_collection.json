@@ -1,0 +1,196 @@
+{
+	"info": {
+		"_postman_id": "2a7c16a5-3ce7-4d6d-8fb0-c990751f0bde",
+		"name": "InAccess Assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5678860"
+	},
+	"item": [
+		{
+			"name": "Period: 1h",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/ptlist?period=1h&tz=Europe/Athens&t1=20210714T204603Z&t2=20210715T123456Z",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ptlist"
+					],
+					"query": [
+						{
+							"key": "period",
+							"value": "1h"
+						},
+						{
+							"key": "tz",
+							"value": "Europe/Athens"
+						},
+						{
+							"key": "t1",
+							"value": "20210714T204603Z"
+						},
+						{
+							"key": "t2",
+							"value": "20210715T123456Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Period: 1d",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/ptlist?period=1d&tz=Europe/Athens&t1=20211010T204603Z&t2=20211115T123456Z",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ptlist"
+					],
+					"query": [
+						{
+							"key": "period",
+							"value": "1d"
+						},
+						{
+							"key": "tz",
+							"value": "Europe/Athens"
+						},
+						{
+							"key": "t1",
+							"value": "20211010T204603Z"
+						},
+						{
+							"key": "t2",
+							"value": "20211115T123456Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Period: 1mo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/ptlist?period=1mo&tz=Europe/Athens&t1=20210214T204603Z&t2=20211115T123456Z",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ptlist"
+					],
+					"query": [
+						{
+							"key": "period",
+							"value": "1mo"
+						},
+						{
+							"key": "tz",
+							"value": "Europe/Athens"
+						},
+						{
+							"key": "t1",
+							"value": "20210214T204603Z"
+						},
+						{
+							"key": "t2",
+							"value": "20211115T123456Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Period: 1y",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8080/ptlist?period=1y&tz=Europe/Athens&t1=20180214T204603Z&t2=20211115T123456Z",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"ptlist"
+					],
+					"query": [
+						{
+							"key": "period",
+							"value": "1y"
+						},
+						{
+							"key": "tz",
+							"value": "Europe/Athens"
+						},
+						{
+							"key": "t1",
+							"value": "20180214T204603Z"
+						},
+						{
+							"key": "t2",
+							"value": "20211115T123456Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Error: Unsupported period",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "0.0.0.0:3000/ptlist?period=1w&tz=Europe/Athens&t1=20180214T204603Z&t2=20211115T123456Z",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "3000",
+					"path": [
+						"ptlist"
+					],
+					"query": [
+						{
+							"key": "period",
+							"value": "1w"
+						},
+						{
+							"key": "tz",
+							"value": "Europe/Athens"
+						},
+						{
+							"key": "t1",
+							"value": "20180214T204603Z"
+						},
+						{
+							"key": "t2",
+							"value": "20211115T123456Z"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

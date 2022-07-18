@@ -13,6 +13,7 @@ type Task struct {
 	T2       time.Time
 }
 
+// it creates and returns a Task after it validates the given arguments.
 func MakeTask(p string, tz string, t1Str string, t2Str string) (Task, bool, string) {
 	time.LoadLocation(tz)
 	t1, err := utils.ParseFormatedDate(t1Str)
@@ -29,6 +30,7 @@ func MakeTask(p string, tz string, t1Str string, t2Str string) (Task, bool, stri
 	return Task{Period: p, Timezone: "Europe/Athens", T1: t1, T2: t2}, true, ""
 }
 
+// Returns the matching timestamps of the task
 func (t *Task) GetMatchingTimestamps() []string {
 	timestamps := []string{}
 

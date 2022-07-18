@@ -11,6 +11,7 @@ import (
 	"github.com/teomandi/go-inaccess/pkg/structs"
 )
 
+// method to handle the ptlist request
 func ptlist(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	period, tz := r.URL.Query().Get("period"), r.URL.Query().Get("tz")

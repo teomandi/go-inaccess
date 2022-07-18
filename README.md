@@ -79,3 +79,6 @@ If the application runs in a different port from the default, you can change it 
 
 However, this cannot happen in the docker-approach, since in the docker container the port is fixed at 8080.
 
+## Postman Collection
+
+To easier test this application manually, o **Postman** can be found at [here](./InAccessAssignment.postman_collection.json)
